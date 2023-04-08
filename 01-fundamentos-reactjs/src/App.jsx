@@ -5,6 +5,38 @@ import { Header } from './components/header/Header'
 import { Sidebar } from './components/sidebar/Sidebar'
 import { Post } from './components/post/Post'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://avatars.githubusercontent.com/u/53240060?v=4',
+      name: "Lucas de Souza",
+      role: "Software Engineer"
+    },
+    content: [
+      {type: "paragraph", content: "Fala galera" },
+      {type: "paragraph", content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
+      {type: "link", content: "jane.desing/doctorcare" },
+    ],
+    publisheAt: new Date('2023-05-13 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://avatars.githubusercontent.com/u/53240060?v=4',
+      name: "Junior Junior",
+      role: "Software Engineer"
+    },
+    content: [
+      {type: "paragraph", content: "Fala galera" },
+      {type: "paragraph", content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
+      {type: "link", content: "jane.desing/doctorcare" },
+    ],
+    publisheAt: new Date('2023-05-13 20:00:00')
+  }
+]
+
+
 export function App() {
   return (
     <div>
@@ -12,8 +44,17 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post />
-          <Post />
+          {
+            posts.map(post => {
+              return (
+                <Post 
+                  author={post.author}
+                  content={post.content}
+                  publisheAt={post.publisheAt}
+                />
+              )
+            })
+          }
         </main>
       </div>
     </div>

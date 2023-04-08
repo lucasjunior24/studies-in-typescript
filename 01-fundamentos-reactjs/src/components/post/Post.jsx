@@ -3,7 +3,8 @@ import { Comment } from '../comment/Comment'
 import styles from './Post.module.css'
 
 
-export function Post() {
+export function Post(props) {
+  console.log(props)
   return (
     <article className={styles.post}>
         <header>
