@@ -14,7 +14,7 @@ const posts = [
       role: "Software Engineer"
     },
     content: [
-      {type: "paragraph", content: "Fala galera" },
+      {type: "paragraph", content: "Conteudo top" },
       {type: "paragraph", content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
       {type: "link", content: "jane.desing/doctorcare" },
     ],
@@ -23,7 +23,7 @@ const posts = [
   {
     id: 2,
     author: {
-      avatarUrl: 'https://avatars.githubusercontent.com/u/53240060?v=4',
+      avatarUrl: 'https://avatars.githubusercontent.com/u/2348618?v=4',
       name: "Junior Junior",
       role: "Software Engineer"
     },
