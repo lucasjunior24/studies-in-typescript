@@ -1,10 +1,16 @@
+
+
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { Avatar } from '../avatar/Avatar'
 import { Comment } from '../comment/Comment'
 import styles from './Post.module.css'
+import { useState } from 'react'
 
 export function Post({author, publisheAt, content}) {
+  const [comments, setComments] = useState(['teste'])
+  const [newCommentText, setNewCommentText] = useState('')
+
   const publishedDateFormatted = format(publisheAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
   })
@@ -12,6 +18,16 @@ export function Post({author, publisheAt, content}) {
     locale: ptBR,
     addSuffix: true
   })
+
+  function handleCreateNewComment() {
+    event.preventDefault()
+    setComments([...comments, newCommentText])
+    setNewCommentText('')
+  }
+
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value)
+  }
   return (
     <article className={styles.post}>
         <header>
@@ -24,10 +40,8 @@ export function Post({author, publisheAt, content}) {
                     <span>{author.role}</span>
                 </div>
             </div>
-
             <time title={publishedDateFormatted} dateTime={publisheAt.toISOString()}>{publishedDateRelativeToNow}</time>
         </header>
-
         <div className={styles.content}>
           {content.map(line => {
             if (line.type === "paragraph") {
@@ -36,13 +50,15 @@ export function Post({author, publisheAt, content}) {
               return<p><a href=''>{line.content}</a></p>
             }
           })}
-
         </div>
 
-        <form className={styles.commentForm}>
+        <form className={styles.commentForm} onSubmit={handleCreateNewComment}>
             <strong>Deixe seu feedback</strong>
             <textarea
-                placeholder='Deixe seu comentário'
+              name='comment'
+              placeholder='Deixe seu comentário'
+              value={newCommentText}
+              onChange={handleNewCommentChange}
             />
             <footer>
                 <button type='submit'>Publicar</button>
@@ -50,9 +66,9 @@ export function Post({author, publisheAt, content}) {
         </form>
 
         <div className={styles.commentList}>
-            <Comment />
-            <Comment />
-            <Comment />
+          {comments.map(comment => {
+            return <Comment content={comment} />
+          })}
         </div>
     </article>
   )

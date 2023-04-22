@@ -45,9 +45,10 @@ export function App() {
         <Sidebar />
         <main>
           {
-            posts.map(post => {
+            posts.map((post, i) => {
               return (
                 <Post 
+                  key={i}
                   author={post.author}
                   content={post.content}
                   publisheAt={post.publisheAt}
