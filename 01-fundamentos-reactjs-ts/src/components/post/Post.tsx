@@ -18,6 +18,7 @@ interface Content {
   type: 'paragraph' | 'link';
   content: string;
 }
+
 interface PostProps {
   author: Author;
   publisheAt: Date;
@@ -66,8 +67,8 @@ export function Post({author, publisheAt, content}: PostProps) {
         <header>
             <div className={styles.author}>
                 <Avatar
-                    hasBorder={true}
-                    src={author.avatarUrl} />
+                    src={author.avatarUrl} 
+                  />
                 <div className={styles.authorInfo}>
                     <strong>{author.name}</strong>
                     <span>{author.role}</span>

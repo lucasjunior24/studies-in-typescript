@@ -14,9 +14,9 @@ const posts = [
       role: "Software Engineer"
     },
     content: [
-      {type: "paragraph", content: "Conteudo top" },
-      {type: "paragraph", content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
-      {type: "link", content: "jane.desing/doctorcare" }
+      {type: 'paragraph', content: "Conteudo top" },
+      {type: 'paragraph', content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
+      {type: 'link', content: "jane.desing/doctorcare" }
     ],
     publisheAt: new Date('2023-05-13 20:00:00')
   },
@@ -28,9 +28,9 @@ const posts = [
       role: "Software Engineer"
     },
     content: [
-      {type: "paragraph", content: "Fala galera" },
-      {type: "paragraph", content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
-      {type: "link", content: "jane.desing/doctorcare" }
+      {type: 'paragraph', content: "Fala galera" },
+      {type: 'paragraph', content: "Acabei de subir mais um projeto no meu portifolio, é um projeto muito legal, vocês iram gopstar muito." },
+      {type: 'link', content: "jane.desing/doctorcare" }
     ],
     publisheAt: new Date('2023-05-13 20:00:00')
   }
@@ -50,8 +50,8 @@ export function App() {
                 <Post 
                   key={post.id}
                   author={post.author}
-                  content={post.content}
                   publisheAt={post.publisheAt}
+                  content={post.content}
                 />
               )
             })
