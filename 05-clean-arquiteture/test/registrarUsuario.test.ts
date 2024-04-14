@@ -1,9 +1,9 @@
-import Banco from "../src/banco";
+import { BancoEmMemoria } from "../src/bancoEmMemoria";
 import { RegistrarUsuario, User } from "../src/registrarUsuario";
 import { expect, test } from "@jest/globals";
 
 test("Deve registrar usuário", () => {
-  const banco = new Banco();
+  const banco = new BancoEmMemoria();
   const useCase = new RegistrarUsuario(banco);
   const user: User = {
     name: "Lucas",
@@ -14,5 +14,6 @@ test("Deve registrar usuário", () => {
   const userTest = useCase.exec(user);
   expect(userTest).toHaveProperty("id");
   expect(userTest.name).toBe(user.name);
+  expect(userTest.email).toBe(user.email);
   expect(userTest.email).toBe(user.email);
 });

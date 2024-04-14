@@ -1,4 +1,5 @@
 import Banco from "./banco";
+import { Colecao } from "./interface/colecao";
 
 export type User = {
   id?: string;
@@ -8,7 +9,7 @@ export type User = {
 };
 
 export class RegistrarUsuario {
-  constructor(private banco: Banco) {}
+  constructor(private banco: Colecao) {}
   exec(user: User) {
     const passwordCript = user.password.split("").reverse().join("");
 
