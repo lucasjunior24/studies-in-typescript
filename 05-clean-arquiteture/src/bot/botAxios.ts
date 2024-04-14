@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Service } from "./service";
 
 export class BotAxios {
   axios = axios.create({
@@ -11,21 +10,8 @@ export class BotAxios {
     // baseURL: 'http://localhost:3333',
   });
 
-  async getUser(id: string) {
+  async get<T>(id: string): Promise<T> {
     const data = await axios.get(id);
-    return id;
+    return data.data.data;
   }
 }
-
-const botAxios = new BotAxios();
-
-const s = new Service(botAxios);
-
-export class BotTest extends BotAxios {
-  async getUser(id: string) {
-    return id;
-  }
-}
-const bot_test = new BotTest();
-
-const s_test = new Service(bot_test);
