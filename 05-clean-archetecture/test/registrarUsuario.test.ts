@@ -1,5 +1,5 @@
-import { BancoEmMemoria } from "../src/bancoEmMemoria";
-import { RegistrarUsuario, User } from "../src/registrarUsuario";
+import { BancoEmMemoria } from "../src/adapters/bancoEmMemoria";
+import { RegistrarUsuario, User } from "../src/app/users/registrarUsuario";
 import { expect, test } from "@jest/globals";
 
 test("Deve registrar usuário", () => {

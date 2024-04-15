@@ -1,5 +1,5 @@
-import Banco from "./banco";
-import { Colecao } from "./interface/colecao";
+import Banco from "../../banco";
+import { Colecao } from "../ports/colecao";
 
 export type User = {
   id?: string;

@@ -1,7 +1,7 @@
 import { expect, test } from "@jest/globals";
 import { BotTest } from "./dependency/botTest";
 import { UserService } from "../src/bot/userService";
-import { User } from "../src/registrarUsuario";
+import { User } from "../src/app/users/registrarUsuario";
 
 test("Deve criar usuarios", async () => {
   const bot_test = new BotTest();

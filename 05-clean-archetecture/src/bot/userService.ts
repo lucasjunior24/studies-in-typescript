@@ -1,4 +1,4 @@
-import { IBotAxios } from "../interface/botAxios";
+import { IBotAxios } from "../app/ports/botAxios";
 
 export class UserService {
   constructor(private bot: IBotAxios) {}

@@ -1,4 +1,4 @@
-import { IBotAxios } from "../../src/interface/botAxios";
+import { IBotAxios } from "../../src/app/ports/botAxios";
 
 export class BotTest implements IBotAxios {
   insert<T>(item: T): T {

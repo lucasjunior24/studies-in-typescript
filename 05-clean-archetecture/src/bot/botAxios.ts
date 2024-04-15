@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IBotAxios } from "../interface/botAxios";
+import { IBotAxios } from "../app/ports/botAxios";
 
 export class BotAxios implements IBotAxios {
   axios = axios.create({

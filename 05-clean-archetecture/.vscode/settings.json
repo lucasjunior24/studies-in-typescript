@@ -1,0 +1,6 @@
+{
+  "material-icon-theme.folders.associations": {
+    "ports": "circleci",
+    "adapters": "connection"
+  }
+}

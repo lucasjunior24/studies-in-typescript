@@ -1,4 +1,4 @@
-import { Colecao } from "./interface/colecao";
+import { Colecao } from "../app/ports/colecao";
 
 export class BancoEmMemoria implements Colecao {
   private static items: any[] = [];
