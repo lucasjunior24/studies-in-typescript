@@ -43,10 +43,9 @@ export function Test() {
 
   const task = watch("task");
   const isSubmitDisabled = !task;
-  console.log("ttest");
+
   function handleCreateNewCycle(data: NewCycleFormData) {
     const newCycle = createNewCycle(data);
-
     setTodo((state) => {
       return {
         activeCycleId: newCycle.id,
