@@ -9,7 +9,7 @@ import { NewCycleForm } from "./NewCycleForm";
 
 import { useNavigate } from "react-router-dom";
 
-import { doctorHook } from "../../hooks/doctor";
+import { useCreate } from "../../hooks/doctor";
 
 const newCycleFormValidationSchema = Zod.object({
   name: Zod.string().min(1, "Informe a tarefa"),
@@ -25,7 +25,7 @@ const newCycleFormValidationSchema = Zod.object({
 export type NewDoctorFormData = Zod.infer<typeof newCycleFormValidationSchema>;
 
 export function Doctor() {
-  const { create, status } = doctorHook.useCreate();
+  const { create, status } = useCreate();
 
   const newDoctorForm = useForm<NewDoctorFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),

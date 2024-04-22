@@ -1,27 +1,31 @@
 import { atomWithMutation, atomWithQuery } from "jotai-tanstack-query";
 import { NewDoctorFormData } from "../../pages/Doctor";
 import { queryClient } from "../../App";
-import api from "../service/axios";
-import { Doctors } from "../../pages/Doctors";
+
+import { DoctorService } from "../service/doctorService";
 
 export class DoctorsAtom {
+  private static NAME = "doctors";
+  constructor(private service: DoctorService) {}
+
   createDoctorAtom = atomWithMutation(() => ({
-    mutationKey: ["doctors"],
+    mutationKey: [DoctorsAtom.NAME],
     mutationFn: async (doctor: NewDoctorFormData) => {
-      console.log("atomWithMutation");
-      console.log(doctor);
-      api.post("/doctors", doctor);
+      this.service.post(doctor);
     },
-    onSuccess: async () => {
-      return await queryClient.invalidateQueries({ queryKey: ["doctors"] });
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({
+        queryKey: [DoctorsAtom.NAME],
+      });
     },
   }));
 
-  getDoctors = atomWithQuery<{ data: Doctors[] }>(() => ({
-    queryKey: ["doctors"],
+  getDoctors = atomWithQuery(() => ({
+    queryKey: [DoctorsAtom.NAME],
     queryFn: async () => {
-      return await api.get("/doctors");
+      return await this.service.get();
     },
   }));
+
+  // static singleton: DoctorsAtom = new DoctorsAtom();
 }
-export const doctorsAtom = new DoctorsAtom();

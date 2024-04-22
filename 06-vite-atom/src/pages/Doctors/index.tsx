@@ -1,19 +1,19 @@
 import { HistoryContainer, HistoryList } from "./styled";
 
-import { formatDistanceToNow } from "date-fns";
+// import { formatDistanceToNow } from "date-fns";
 
 import { NewDoctorFormData } from "../Doctor";
-import { ptBR } from "date-fns/locale";
+// import { ptBR } from "date-fns/locale";
 
-import { doctorHook } from "../../hooks/doctor";
+import { useDoctors } from "../../hooks/doctor";
 
-export interface Doctors extends NewDoctorFormData {
+export interface DoctorsDTO extends NewDoctorFormData {
   id: string;
   created_at: string;
 }
 
 export function Doctors() {
-  const data = doctorHook.useDoctors();
+  const data = useDoctors();
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -34,12 +34,12 @@ export function Doctors() {
                 <td>{cycle.name}</td>
                 <td>{cycle.email}</td>
                 <td>{cycle.email}</td>
-                <td>
+                {/* <td>
                   {formatDistanceToNow(cycle.created_at, {
                     addSuffix: true,
                     locale: ptBR,
                   })}
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

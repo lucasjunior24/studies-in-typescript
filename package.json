@@ -2,5 +2,13 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "immer": "^10.0.2"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/svelte": "^5.0.1",
+    "@vitest/ui": "^1.5.0",
+    "jsdom": "^24.0.0",
+    "vitest": "^1.5.0"
   }
 }
