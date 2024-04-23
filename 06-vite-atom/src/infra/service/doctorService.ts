@@ -19,5 +19,5 @@ export class DoctorService {
     );
   }
 
-  // static singleton: DoctorService = new DoctorService();
+  static singleton: DoctorService = new DoctorService();
 }

@@ -34,12 +34,7 @@ export function Doctors() {
                 <td>{cycle.name}</td>
                 <td>{cycle.email}</td>
                 <td>{cycle.email}</td>
-                {/* <td>
-                  {formatDistanceToNow(cycle.created_at, {
-                    addSuffix: true,
-                    locale: ptBR,
-                  })}
-                </td> */}
+                <td>{cycle.created_at}</td>
               </tr>
             ))}
           </tbody>

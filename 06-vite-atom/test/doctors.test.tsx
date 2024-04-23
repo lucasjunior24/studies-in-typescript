@@ -18,6 +18,8 @@ import { queryClient } from "../src/App";
 // import React from "react";
 // import { DoctorHook } from "../src/hooks/doctor";
 import * as useDoctors from "../src/hooks/doctor";
+import { DefaultLayout } from "../src/layouts/DefaultLayout";
+import { MemoryRouter } from "react-router-dom";
 
 export function sum(a: number, b: number) {
   return a + b;
@@ -30,11 +32,6 @@ test("adds 1 + 2 to equal 3", () => {
 const useDoctorsSPY = vitest.spyOn(useDoctors, "useDoctors");
 
 const Component = () => {
-  // const HydrateAtoms = ({ children }: { children: ReactNode }) => {
-  //   useHydrateAtoms([[queryClientAtom, queryClient]]);
-  //   return children;
-  // };
-
   return (
     <QueryClientProvider client={queryClient}>
       <Provider>
@@ -62,7 +59,6 @@ describe("testee", () => {
     ]);
     render(<Component />);
 
-    console.log(screen.debug());
     expect(screen.getByText("lucas")).toBeInTheDocument();
   });
 });
@@ -86,4 +82,28 @@ test("DEVE CRIAR HOOK", async () => {
   // console.log(data);
 
   expect(expect_data.name).toBe(expect_data.name);
+});
+
+const LayoutTest = () => {
+  const route = "/some-route";
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Provider>
+        <MemoryRouter initialEntries={[route]}>
+          <DefaultLayout />
+        </MemoryRouter>
+      </Provider>
+    </QueryClientProvider>
+  );
+};
+describe("deve renderizar layout", () => {
+  it("aaaaaaaaaaa", () => {
+    // const atomDoctor = new DoctorsAtom(service);
+
+    // const doctorHook = new DoctorHook(atomDoctor);
+
+    render(<LayoutTest />);
+
+    // expect(screen.getByText("lucas")).toBeInTheDocument();
+  });
 });

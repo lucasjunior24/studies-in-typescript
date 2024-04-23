@@ -1,19 +1,21 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { atomWithMutation, atomWithQuery } from "jotai-tanstack-query";
 import { NewDoctorFormData } from "../../pages/Doctor";
-import { queryClient } from "../../App";
 
 import { DoctorService } from "../service/doctorService";
+import { queryClient } from "../../App";
 
 export class DoctorsAtom {
   private static NAME = "doctors";
-  constructor(private service: DoctorService) {}
+
+  constructor(private service: DoctorService = DoctorService.singleton) {}
 
   createDoctorAtom = atomWithMutation(() => ({
     mutationKey: [DoctorsAtom.NAME],
     mutationFn: async (doctor: NewDoctorFormData) => {
       this.service.post(doctor);
     },
-    onSettled: async () => {
+    onSuccess: async () => {
       return await queryClient.invalidateQueries({
         queryKey: [DoctorsAtom.NAME],
       });
@@ -27,5 +29,5 @@ export class DoctorsAtom {
     },
   }));
 
-  // static singleton: DoctorsAtom = new DoctorsAtom();
+  static singleton: DoctorsAtom = new DoctorsAtom();
 }

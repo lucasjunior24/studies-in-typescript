@@ -1,24 +1,15 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useAtom } from "jotai";
 import { DoctorsAtom } from "../infra/atoms/doctor";
-import { DoctorService } from "../infra/service/doctorService";
+import { formatrDate } from "../utils/formatDate";
 
-export class DoctorHook {
-  constructor(
-    private doctorAtom: DoctorsAtom = new DoctorsAtom(new DoctorService())
-  ) {}
-
-  useCreate() {
-    const [{ mutate, status }] = useAtom(this.doctorAtom.createDoctorAtom);
-    return { create: mutate, status };
-  }
-
-  useDoctors() {
-    const [{ data }] = useAtom(this.doctorAtom.getDoctors);
-    return data;
-  }
-
-  static singleton: DoctorHook = new DoctorHook();
+export function useCreate() {
+  const [{ mutate, status }] = useAtom(DoctorsAtom.singleton.createDoctorAtom);
+  return { create: mutate, status };
 }
-
-export const { useCreate, useDoctors } = DoctorHook.singleton;
+export function useDoctors() {
+  const [{ data }] = useAtom(DoctorsAtom.singleton.getDoctors);
+  const doctors = data?.map((d) => {
+    return { ...d, created_at: formatrDate(d.created_at) };
+  });
+  return doctors;
+}
